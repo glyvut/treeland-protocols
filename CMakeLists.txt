@@ -13,6 +13,7 @@ include(CMakePackageConfigHelpers)
 
 # Public protocol XML files (for general application developers)
 set(TREELAND_PROTOCOL_XML_FILES
+  public/treeland-capture-snap-unstable-v1.xml
   public/treeland-dde-shell-v1.xml
   public/treeland-appearance-unstable-v1.xml
   public/treeland-decoration-unstable-v1.xml
@@ -50,7 +51,6 @@ set(TREELAND_PROTOCOL_WINE_XML_FILES
 # Deprecated protocol XML files (replaced by newer versions)
 set(TREELAND_PROTOCOL_DEPRECATED_XML_FILES
   deprecated/treeland-app-id-resolver-v1.xml
-  deprecated/treeland-capture-unstable-v1.xml
   deprecated/treeland-ddm-v1.xml
   deprecated/treeland-output-manager-v1.xml
   deprecated/treeland-personalization-manager-v1.xml
