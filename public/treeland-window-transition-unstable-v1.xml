@@ -63,13 +63,12 @@
            the latest set geometry when B is closed.
         9. When B is closed, the compositor plays the close animation from
            B's geometry back to the rectangle.
-         10. Once the compositor stops using the rectangle (e.g. because B
-             is destroyed), it sends the closed event on the rect object.
-             A destroys the rect object after receiving this event.
+         10. Once the compositor stops using the rectangle, it sends the
+             closed event on the rect object. A destroys the rect object
+             after receiving this event.
         11. If A destroys the rect object before B is closed (or if A's
             client disconnects, or if A is destroyed), the compositor falls
-            back to its default close animation and does not send the closed
-            event.
+            back to its default close animation.
 
         Timing and responsibilities:
 
@@ -187,17 +186,12 @@
 
         <event name="closed">
             <description summary="the rectangle is no longer usable">
-                Sent once the compositor no longer references this rectangle,
-                e.g. because the target window has been destroyed. From this
-                point the object is useless to the client and should be
-                destroyed.
+                Sent when the compositor is done with this rectangle. The
+                client must destroy the rectangle object after receiving this
+                event.
 
-                This is a notification only. This event is sent at most once
-                per rectangle object, and only if the rectangle object was
-                still alive when the compositor stopped using it. If the client
-                destroys the rectangle (or disconnects) before then, this event
-                is not sent. No further events are delivered on this object
-                after closed.
+                This is a notification only. No further events are delivered
+                on this object after closed.
             </description>
         </event>
     </interface>
